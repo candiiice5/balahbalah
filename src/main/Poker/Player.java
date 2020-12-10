@@ -49,8 +49,12 @@ public class Player {
 					pairRemoved = true;
 				}
 			}
-			showIndDeck();
+			//showIndDeck();
 			if(!pairRemoved) a++;
 		}
+	}
+
+	public void removeCard(int IndexToRemove) {
+		IndDeck.remove(IndexToRemove);
 	}
 }
