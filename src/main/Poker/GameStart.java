@@ -12,7 +12,7 @@ public class GameStart {
 	public int getBiggestHand(List<Player> players) {
 		int biggestHand = players.get(0).getIndDeck().size();
 		int pBigHand = 0;
-		for(int i = 0; i <= 3; i++) {
+		for(int i = 0; i < 4; i++) {
 			if(players.get(i).getIndDeck().size() > biggestHand) {
 				pBigHand = i;
 			}
@@ -42,13 +42,14 @@ public class GameStart {
 			for(int j = 0; j <= 12; j++) {
 				players.get(i).setIndDeck(deck.getDeck().get((i+ 1) * (j + 1) - 1));
 			}
-			//players.get(i).showIndDeck();
+			players.get(i).showIndDeck();
 			players.get(i).removeDuplicates();
+			players.get(i).showIndDeck();
 		}
 		
 		int pBigHand = round.getBiggestHand(players);
 		
-		//System.out.println(round.getBiggestHand(players));
+		System.out.println(round.getBiggestHand(players));
 		
 		while(!round.IsGameEnd) {
 			for(int i = pBigHand; i <= pBigHand + 3; i++) {
@@ -62,7 +63,7 @@ public class GameStart {
 					
 					Card cardPicked = players.get(i - 4).getIndDeck().get(number - 1);
 					
-					players.get(i - 4).removeCard(number);
+					players.get(i - 4).removeCard(number - 1);
 					
 					if(round.IsGameEnd(players.get(i - 4))) {
 						System.out.println("Winner is Player # " + (i - 4));
@@ -97,7 +98,7 @@ public class GameStart {
 					
 					System.out.println(cardPicked.getSuit() + cardPicked.getCardNum());
 					
-					players.get(i).removeCard(number);
+					players.get(i).removeCard(number - 1);
 					
 					if(round.IsGameEnd(players.get(i))) {
 						System.out.println("Winner is Player # " + (i));
