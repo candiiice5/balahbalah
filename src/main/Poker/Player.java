@@ -42,10 +42,14 @@ public class Player {
 		while(a < IndDeck.size()) {
 			boolean pairRemoved = false;
 			
+			if(IndDeck.size() == 1) break;
+			
 			for(int b = 1; b < IndDeck.size() - a; b++) {
 				if(IndDeck.get(a).getCardNum() == IndDeck.get(a + b).getCardNum()) {
+					IndDeck.remove(a + b);
+					
 					IndDeck.remove(a);
-					IndDeck.remove(a + b - 1);
+					
 					pairRemoved = true;
 				}
 			}
